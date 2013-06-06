@@ -12,8 +12,8 @@
 
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"
 		p:javaMailProperties-ref="mailProperties"
-		p:username="sock.sqt@gmail.com"
-		p:password="8uk4n45xD#" />
+		p:username="username@gmail.com"
+		p:password="secret" />
 
 	<bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
 		<property name="velocityProperties">
