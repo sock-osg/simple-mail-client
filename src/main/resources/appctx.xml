@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
-		
+
 	<util:properties id="mailProperties" location="classpath:config-mail.properties" />
 
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"
-		p:javaMailProperties-ref="mailProperties"
-		p:username="username@gmail.com"
+		p:javaMailProperties-ref="mailProperties" p:username="username@gmail.com"
 		p:password="secret" />
 
-	<bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+	<bean id="velocityEngine"
+		class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
 		<property name="velocityProperties">
 			<value>
 				resource.loader=class
@@ -23,10 +21,9 @@
 			</value>
 		</property>
 	</bean>
-	
-	<bean id="servRegistration" class="com.oz.mail.client.service.impl.SimpleRegistrationServiceImpl"
-		p:mailSender-ref="mailSender"
-		p:velocityEngine-ref="velocityEngine"
-		/>
+
+	<bean id="servRegistration"
+		class="com.oz.mail.client.service.impl.SimpleRegistrationServiceImpl"
+		p:mailSender-ref="mailSender" p:velocityEngine-ref="velocityEngine" />
 
 </beans>
